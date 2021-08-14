@@ -28,11 +28,13 @@ def make_datapath_list(phase="train", rate=0.8):
     path_A = []
     path_B = []
     path_C = []
+    path_D = []
 
     for name in files_name:
         path_A.append(rootpath + phase + '_A/'+name)
         path_B.append(rootpath + phase + '_B/'+name)
         path_C.append(rootpath + phase + '_C/'+name)
+        path_C.append(rootpath + phase + '_D/'+name)
 
     num = len(path_A)
 
@@ -40,8 +42,9 @@ def make_datapath_list(phase="train", rate=0.8):
         path_A, path_A_val = path_A[:int(num*rate)], path_A[int(num*rate):]
         path_B, path_B_val = path_B[:int(num*rate)], path_B[int(num*rate):]
         path_C, path_C_val = path_C[:int(num*rate)], path_C[int(num*rate):]
-        path_list = {'path_A': path_A, 'path_B': path_B, 'path_C': path_C}
-        path_list_val = {'path_A': path_A_val, 'path_B': path_B_val, 'path_C': path_C_val}
+        path_D, path_D_val = path_D[:int(num*rate)], path_D[int(num*rate):]
+        path_list = {'path_A': path_A, 'path_B': path_B, 'path_D': path_D}
+        path_list_val = {'path_A': path_A_val, 'path_B': path_B_val, 'path_C': path_C_val, 'path_D': path_D_val}
         return path_list, path_list_val
 
     elif phase=='test':
